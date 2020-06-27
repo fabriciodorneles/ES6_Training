@@ -22,7 +22,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-// CLASSES E INHERITANCE
+// CLASSES E INHERITANCE-----------------------------------------------------------
 var List = /*#__PURE__*/function () {
   function List() {
     _classCallCheck(this, List);
@@ -74,7 +74,7 @@ document.getElementById('novotodo').onclick = function () {
   MinhaLista.add('mais uno');
 };
 
-MinhaLista.mostraUsuario(); //Método ESTATICO na classe
+MinhaLista.mostraUsuario(); //Método ESTATICO na classe---------------------------------------------------------
 
 var Matematica = /*#__PURE__*/function () {
   function Matematica() {
@@ -91,7 +91,7 @@ var Matematica = /*#__PURE__*/function () {
   }]);
 
   return Matematica;
-}(); //VETORES
+}(); //VETORES, FUNÇÔES DE MANIPULAÇÂO --------------------------------------------------
 // const arr = [1,3,4,5,8,9];
 // console.log(arr);
 // // método que percorre todo o array e executa o codigo para cada item
@@ -114,7 +114,8 @@ var Matematica = /*#__PURE__*/function () {
 //     return item === 4;    
 // })
 // console.log(find);
-//ARROW FUNCTION - quando for função anônima e tiver só um item de parametro dá pra fazer tudo isso
+//ARROW FUNCTION -----------------------------------------------------------------------
+//quando for função anônima e tiver só um item de parametro dá pra fazer tudo isso
 
 
 var arr1 = [1, 3, 4, 5, 6]; //const newArr1 = arr1.map(function(item){ 
@@ -141,4 +142,58 @@ var teste = function teste() {
 }; //Por isso tem que ter os partenses, aí rola
 
 
-console.log(teste());
+console.log(teste()); //VALORES PADRÂO --------------------------------------------------
+//Implentação sem valores padrão
+// function soma(a,b){
+//     return a+b;    
+// }
+// console.log(soma(1));
+// console.log(soma()); //normalmente aqui vai dar erro,claro
+// function soma(a=3,b=7){
+//     return a+b;    
+// }
+// console.log(soma(1));
+// console.log(soma()); //agora aqui não vai mais pq tá definido os valores default na função
+//e pode ser usado com arrow function
+
+var soma = function soma() {
+  var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 7;
+  return a + b;
+};
+
+console.log(soma(1));
+console.log(soma()); //agora aqui não vai mais pq tá definido os valores default na função
+//DESESTRUTURAÇÃO DE OBJETOS ----------------------------------------------------
+
+var usuario = {
+  nome: 'Fabricio',
+  idade: 42,
+  endereco: {
+    cidade: 'Rio de Janeiro',
+    estado: 'RJ'
+  }
+};
+console.log(usuario); // metódo padrão
+// const nome = usuario.nome;
+// const idade =  usuario.idade;
+// const idade = usuario.endereço.cidade;
+// com desestruturação
+
+var nome = usuario.nome,
+    idade = usuario.idade,
+    cidade = usuario.endereco.cidade;
+console.log(nome);
+console.log(idade);
+console.log(cidade); // function mostraNome(usuario){
+//     console.log(usuario.nome, usuario.idade);
+// }
+//dá pra usar tb nos parâmetros de função
+
+function mostraNome(_ref) {
+  var nome = _ref.nome,
+      idade = _ref.idade;
+  console.log(nome, idade);
+}
+
+mostraNome(usuario); //REST (teve que instalar o plugin pro babel)

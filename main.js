@@ -1,4 +1,4 @@
-// CLASSES E INHERITANCE
+// CLASSES E INHERITANCE-----------------------------------------------------------
 class List {
     constructor() {
         this.data = [];
@@ -28,7 +28,7 @@ document.getElementById('novotodo').onclick = function() {
 
 MinhaLista.mostraUsuario();
 
-//Método ESTATICO na classe
+//Método ESTATICO na classe---------------------------------------------------------
 class Matematica {
     //Método estático não pode acessar nem guardar nenhuma informação da classe.
     //Mas pode ser usado sem inicializar com new
@@ -37,7 +37,7 @@ class Matematica {
     }
 }
 
-//VETORES
+//VETORES, FUNÇÔES DE MANIPULAÇÂO --------------------------------------------------
 // const arr = [1,3,4,5,8,9];
 // console.log(arr);
 // // método que percorre todo o array e executa o codigo para cada item
@@ -61,7 +61,8 @@ class Matematica {
 // })
 // console.log(find);
 
-//ARROW FUNCTION - quando for função anônima e tiver só um item de parametro dá pra fazer tudo isso
+//ARROW FUNCTION -----------------------------------------------------------------------
+//quando for função anônima e tiver só um item de parametro dá pra fazer tudo isso
 const arr1 = [1, 3, 4, 5, 6];
 //const newArr1 = arr1.map(function(item){ 
 //const newArr1 = arr1.map((item) => {     
@@ -80,3 +81,61 @@ console.log(newArr1);
 //const teste = () => { nome: 'fabricio'}; //Aqui não dá pq a chave de objeto tb pressupões função
 const teste = () => ({ nome: 'fabricio'}); //Por isso tem que ter os partenses, aí rola
 console.log(teste())
+
+//VALORES PADRÂO --------------------------------------------------
+//Implentação sem valores padrão
+// function soma(a,b){
+//     return a+b;    
+// }
+
+// console.log(soma(1));
+// console.log(soma()); //normalmente aqui vai dar erro,claro
+
+// function soma(a=3,b=7){
+//     return a+b;    
+// }
+
+// console.log(soma(1));
+// console.log(soma()); //agora aqui não vai mais pq tá definido os valores default na função
+
+//e pode ser usado com arrow function
+const soma = (a=3, b=7) => (a + b);
+
+console.log(soma(1));
+console.log(soma()); //agora aqui não vai mais pq tá definido os valores default na função
+
+//DESESTRUTURAÇÃO DE OBJETOS ----------------------------------------------------
+const usuario = {
+    nome: 'Fabricio',
+    idade: 42,
+    endereco: {
+        cidade: 'Rio de Janeiro',
+        estado: 'RJ',
+    },
+};
+
+console.log(usuario);
+// metódo padrão
+// const nome = usuario.nome;
+// const idade =  usuario.idade;
+// const idade = usuario.endereço.cidade;
+
+// com desestruturação
+const { nome, idade, endereco: {cidade}} = usuario;
+
+console.log(nome);
+console.log(idade);
+console.log(cidade);
+
+// function mostraNome(usuario){
+    //     console.log(usuario.nome, usuario.idade);
+    // }
+//dá pra usar tb nos parâmetros de função
+function mostraNome({nome, idade}){
+    console.log(nome, idade);
+}
+
+mostraNome(usuario);
+
+//REST (teve que instalar o plugin pro babel)
+
